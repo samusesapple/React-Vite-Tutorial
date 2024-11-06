@@ -1,8 +1,10 @@
-import { useState } from "react";
-import TodoRow from "./components/TodoRow"
-import { dummyTodos } from "./data/todos"
 import { Todo } from "./types/todo";
+import { dummyTodos } from "./data/todos"
+import { useState } from "react";
+// components
+import TodoRow from "./components/TodoRow"
 import AddTodoForm from "./components/AddTodoForm";
+import DeleteAllButton from "./components/DeleteAllButton";
 
 function App() {
 const [todos, setTodos] = useState<Todo[]>(dummyTodos);
@@ -26,6 +28,15 @@ function handleAddTodo(title: string) {
   // setTodos([...todos, {id: todos.length + 1, title, isDone: false}]);
 }
 
+function handleDeleteAll() {
+  if (todos.length === 0) {
+    alert("삭제할 항목이 없습니다.");
+    return;
+  }
+
+  setTodos([]);
+}
+
   return (
     <main className='py-10 h-screen space-y-10'>
       <h1 className='font-bold text-center text-3xl'>My Todo List</h1>
@@ -37,6 +48,7 @@ function handleAddTodo(title: string) {
               <TodoRow key={todo.id} todo={todo} onToggle={handleToggle} />
           ))}
         </div>
+        <DeleteAllButton onDeleteAll={handleDeleteAll} />
       </div>
     </main>
   )
