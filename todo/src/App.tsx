@@ -5,6 +5,7 @@ import { useState } from "react";
 import TodoRow from "./components/TodoRow"
 import AddTodoForm from "./components/AddTodoForm";
 import DeleteAllButton from "./components/DeleteAllButton";
+import DeleteDoneTodoButton from "./components/DeleteDoneTodoButton";
 
 function App() {
 const [todos, setTodos] = useState<Todo[]>(dummyTodos);
@@ -35,6 +36,14 @@ function handleDeleteAll() {
   }
 
   setTodos([]);
+  }
+
+function handleDeleteDone() {
+  if (todos.filter((todo) => todo.isDone).length === 0) {
+    alert("삭제할 항목이 없습니다.");
+    return;
+  }
+  setTodos(todos.filter((todo) => !todo.isDone));
 }
 
   return (
@@ -48,8 +57,11 @@ function handleDeleteAll() {
               <TodoRow key={todo.id} todo={todo} onToggle={handleToggle} />
           ))}
         </div>
-        <DeleteAllButton onDeleteAll={handleDeleteAll} />
       </div>
+      <div className="flex justify-between space-x-2 max-w-md mx-auto">
+          <DeleteAllButton onDeleteAll={handleDeleteAll} />
+          <DeleteDoneTodoButton onDeleteDone={handleDeleteDone} />
+        </div>
     </main>
   )
 }
