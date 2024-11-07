@@ -57,4 +57,19 @@ cd my-todo-app
 
 
 ## 1. 투두 리스트
+### 목적
+  > - Vite + React + Typescript 프로젝트 세팅법 학습 (+ Tailwind CSS)
+  > - 컴포넌트화 및 기본 폴더링 구조 방식 학습
+  > - React의 상태 관리 및 hook 기본 학습
+  > - LocalStorage에 데이터 저장 및 사용하기
+  > - custom hook
+<br>
 
+### 구현 화면
+![ScreenRecording2024-11-07at1 40 48PM-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/c9954595-1a55-4601-b18e-1e38e86e9e1e)
+
+<br>
+<br>
+<br>
+
+### 2. 
