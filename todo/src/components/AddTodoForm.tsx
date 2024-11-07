@@ -17,17 +17,17 @@ function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 }
 
   return (
-    <form className="flex" onSubmit={handleSubmit}>
+    <form className="flex items-center" onSubmit={handleSubmit}>
       <input 
+      className="rounded-s-sm grow border border-gray-300 p-2 focus:inline-block focus:outline-black"
       value={input}
       onChange={(e) => setInput(e.target.value)}
       placeholder="Add a new todo"
-      className="rounded-s-md grow border-1 border-gray-200 p-2 focus:outline-double focus:outline-1 focus:outline-blue-500"
       />
       <button 
+      className="w-16 p-2 rounded-e-md bg-gray-800 text-white  hover:bg-black disabled:bg-gray-300"
       type="submit"
       disabled={input.trim() === ""}
-      className="w-16 rounded-e-md bg-blue-300 text-white  hover:bg-blue-500 disabled:bg-gray-300"
       >
         Add
         </button>

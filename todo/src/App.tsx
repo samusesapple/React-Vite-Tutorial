@@ -2,15 +2,14 @@ import { Todo } from "./types/todo";
 import { dummyTodos } from "./data/todos"
 import { useState } from "react";
 // components
-import TodoRow from "./components/TodoRow"
 import AddTodoForm from "./components/AddTodoForm";
-import DeleteAllButton from "./components/DeleteAllButton";
-import DeleteDoneTodoButton from "./components/DeleteDoneTodoButton";
+import TodoList from "./components/TodoList";
+import TodoSummary from "./components/TodoSummary";
 
 function App() {
 const [todos, setTodos] = useState<Todo[]>(dummyTodos);
 
-function handleToggle(id: number, isDone: boolean) {
+function setTodoDone(id: number, isDone: boolean) {
   setTodos(todos.map((todo) => todo.id === id ? {...todo, isDone} : todo));
   
   // 2. 위 코드와 동일한 코드
@@ -27,6 +26,10 @@ function handleAddTodo(title: string) {
 
   // 마지막 자리에 새로운 todo 추가
   // setTodos([...todos, {id: todos.length + 1, title, isDone: false}]);
+}
+
+function handleDeleteTodo(id: number) {
+  setTodos(todos.filter((todo) => todo.id !== id));
 }
 
 function handleDeleteAll() {
@@ -47,21 +50,19 @@ function handleDeleteDone() {
 }
 
   return (
-    <main className='py-10 h-screen space-y-10'>
-      <h1 className='font-bold text-center text-3xl'>My Todo List</h1>
+    <main className='py-10 h-screen space-y-4 overflow-y-auto'>
+      <h1 className='font-bold text-center text-3xl pb-6'>
+        My Todo List
+      </h1>
       <div className="max-w-md mx-auto bg-blue-50 p-5 rounded-md space-y-6">
-      <AddTodoForm onSubmit={handleAddTodo} />
-        <div className="space-y-2">
-          {/* todo list */}   
-          {todos.map((todo) => (
-              <TodoRow key={todo.id} todo={todo} onToggle={handleToggle} />
-          ))}
-        </div>
+        <AddTodoForm onSubmit={handleAddTodo} />
+        <TodoList todos={todos} onDoneToggle={setTodoDone} onDelete={handleDeleteTodo} />
       </div>
-      <div className="flex justify-between space-x-2 max-w-md mx-auto">
-          <DeleteAllButton onDeleteAll={handleDeleteAll} />
-          <DeleteDoneTodoButton onDeleteDone={handleDeleteDone} />
-        </div>
+      <div className="max-w-md mx-auto">
+        {todos.length > 0 && (
+          <TodoSummary todos={todos} onDeleteAll={handleDeleteAll} onDeleteDone={handleDeleteDone} />
+        )}
+      </div>
     </main>
   )
 }

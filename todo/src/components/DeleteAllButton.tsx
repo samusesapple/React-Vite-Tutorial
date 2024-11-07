@@ -4,14 +4,12 @@ interface DeleteAllButtonProps {
 
 export default function DeleteAllButton({ onDeleteAll }: DeleteAllButtonProps) {
 
-    function handleDeleteAll() {
-        onDeleteAll();
-    }
-
-    return <button
-    onClick={handleDeleteAll}
-    className="w-full rounded-md bg-gray-300 text-white p-2 hover:bg-red-500"
-    >
-        Delete All
-    </button>
+    return (
+        <button
+        onClick={onDeleteAll}
+        className="text-red-400 hover:text-red-600 underline"
+        >
+            Delete All!
+        </button>
+    )
 }
