@@ -22,7 +22,7 @@ function setTodoDone(id: number, isDone: boolean) {
 
 function handleAddTodo(title: string) {
   // 기존 todos 배열 1번째 자리에 새로운 todo 추가
-  setTodos([{id: todos.length + 1, title, isDone: false}, ...todos]);
+  setTodos([{id: Date.now(), title, isDone: false}, ...todos]);
 
   // 마지막 자리에 새로운 todo 추가
   // setTodos([...todos, {id: todos.length + 1, title, isDone: false}]);
