@@ -13,19 +13,19 @@ Vite로 빠르고 효율적인 개발 환경을 설정하고, React와 TypeScrip
   
   Vite 프로젝트를 생성하고 필요한 패키지를 설치:
   
-  ```bash
+```bash
   yarn create vite my-todo-app --template react-ts
   cd my-todo-app
-  ```
+```
   
   ### 2. Tailwind CSS 설치 및 설정
   1. Tailwind CSS 설치:
-    ```bash
-    yarn add -D tailwindcss postcss autoprefixer
-    yarn tailwindcss init -p
-    ```
+```bash
+yarn add -D tailwindcss postcss autoprefixer
+yarn tailwindcss init -p
+```
   2. tailwind.config.js 파일 수정 (Tailwind CSS 설정 파일):
-    ```bash
+```bash
    ...
     module.exports = {
       content: [
@@ -33,13 +33,13 @@ Vite로 빠르고 효율적인 개발 환경을 설정하고, React와 TypeScrip
         "./src/**/*.{js,ts,jsx,tsx}",  <- 추가
       ],
   ...
-    ```
+```
   3. index.css 파일에 Tailwind 지시어 추가 (적용시키기) :
-    ```bash
+  ```bash
     @tailwind base;
     @tailwind components;
     @tailwind utilities;
-    ```
+  ```
   ### 3. 프로젝트 실행
   `yarn dev`
   <br>
@@ -85,11 +85,11 @@ Vite로 빠르고 효율적인 개발 환경을 설정하고, React와 TypeScrip
 # 1. 튜토리얼 프로젝트
   ## 1. 투두 리스트
   ### 목적
-    > - Vite + React + Typescript 프로젝트 세팅법 학습 (+ Tailwind CSS)
-    > - 컴포넌트화 및 기본 폴더링 구조 방식 학습
-    > - React의 상태 관리 및 hook 기본 학습
-    > - LocalStorage에 데이터 저장 및 사용하기
-    > - custom hook
+    > Vite + React + Typescript 프로젝트 세팅법 학습 (+ Tailwind CSS)
+    > 컴포넌트화 및 기본 폴더링 구조 방식 학습
+    > React의 상태 관리 및 hook 기본 학습
+    > LocalStorage에 데이터 저장 및 사용하기
+    > custom hook
   <br>
   
   ### 구현 화면
