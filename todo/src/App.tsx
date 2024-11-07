@@ -1,13 +1,19 @@
 import { Todo } from "./types/todo";
-import { dummyTodos } from "./data/todos"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // components
 import AddTodoForm from "./components/AddTodoForm";
 import TodoList from "./components/TodoList";
 import TodoSummary from "./components/TodoSummary";
 
 function App() {
-const [todos, setTodos] = useState<Todo[]>(dummyTodos);
+const [todos, setTodos] = useState<Todo[]>(() => {
+  const savedTodos = localStorage.getItem('todos');
+  return savedTodos ? JSON.parse(savedTodos) : [];
+});
+
+useEffect(() => { // 컴포넌트가 생성될 때 최초 1회 실행됨
+  localStorage.setItem('todos', JSON.stringify(todos)); // localStorage에 todos 상태 저장 (localStorage는 string만 저장 가능함)
+}, [todos]); // todos 상태가 변경될 때마다 실행되도록 설정
 
 function setTodoDone(id: number, isDone: boolean) {
   setTodos(todos.map((todo) => todo.id === id ? {...todo, isDone} : todo));
