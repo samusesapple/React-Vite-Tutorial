@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../assets/images/logo.png";
 import user from "../../assets/images/user.png";
 // types
@@ -14,6 +14,8 @@ const ShowMoreButton: Menu = {
 };
 
 export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);  
+
   return (
     <div className="flex justify-between items-center p-5">
       <div className="flex items-center gap-8">
@@ -26,7 +28,8 @@ export default function Header() {
         <div className="hidden gap-8 md:flex">
           {menus.map((item) => (
             <HeaderItem
-              item={item}
+              title={item.name}
+              icon={item.icon}
               onClick={() => {
                 console.log("clicked ", item.name);
               }}
@@ -34,24 +37,40 @@ export default function Header() {
           ))}
         </div>
         {/* 반응형 - mobile menu */}
-        <div className="flex gap-8 md:hidden">
+        <div className="flex gap-5 md:hidden">
           {menus.map(
             (item, index) =>
               index < 3 && ( // 3개만 보여주기
                 <HeaderItem
-                  item={item}
+                  title={''}
+                  icon={item.icon}
                   onClick={() => {
                     console.log("clicked ", item.name);
                   }}
                 />
               )
           )}
+          <div className="md:hidden">
           <HeaderItem
-            item={ShowMoreButton}
-            onClick={() => {
-              console.log("clicked ", ShowMoreButton.name);
-            }}
+            title={''}
+            icon={ShowMoreButton.icon}
+            onClick={() => setIsOpen(!isOpen)}
           />
+            <div className={`absolute mt-3 border-[1px] p-3 px-5 py-3bg-[#121212] border-gray-700 ${isOpen ? 'block' : 'hidden'}`}>
+            {menus.map(
+              (item, index) =>
+                index > 2 && ( // 3개만 보여주기
+                  <HeaderItem
+                    title={item.name}
+                    icon={item.icon}
+                    onClick={() => {
+                      console.log("clicked ", item.name);
+                    }}
+                  />
+                )
+            )}
+            </div>
+        </div>
         </div>
       </div>
       <img
