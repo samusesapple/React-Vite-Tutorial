@@ -193,3 +193,10 @@ export default function App() {
 <br>
 
 ### 구현 화면
+#### PC
+![화면 기록 2024-11-11 오전 2 54 08](https://github.com/user-attachments/assets/9429926b-cec6-411f-a572-c69e97b4b81c)
+#### 모바일
+![화면 기록 2024-11-11 오전 2 55 52](https://github.com/user-attachments/assets/c5fe887c-4f52-40c2-a02b-a38f87af740d)
+<br>
+
+
