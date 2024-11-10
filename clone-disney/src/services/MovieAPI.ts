@@ -1,12 +1,19 @@
 import axios from "axios";
 
-const MOVIE_BASE_URL = "https://api.themoviedb.org/3/movie";
+const MOVIE_BASE_URL = "https://api.themoviedb.org/3";
 // https://api.themoviedb.org/3/movie/popular?api_key=a33a314ef556238f97251977ce8635e1
 
 const getPopularMovies = async () => {
-    const response = await axios.get(`${MOVIE_BASE_URL}/popular?api_key=${import.meta.env.VITE_API_KEY}`);
+    const baseUrl = MOVIE_BASE_URL + "/movie/popular";
+    const response = await axios.get(`${baseUrl}?api_key=${import.meta.env.VITE_API_KEY}`);
     return response.data;
 }
+
+const getMoviesByGenre = async (genreId: number) => {
+    const baseUrl = MOVIE_BASE_URL + "/discover/movie";
+    const response = await axios.get(`${baseUrl}?api_key=${import.meta.env.VITE_API_KEY}&with_genres=${genreId}`);
+    return response.data;
+}   
 
 /* 응답값
     {
@@ -33,4 +40,5 @@ const getPopularMovies = async () => {
 
 export default {
     getPopularMovies,
+    getMoviesByGenre,
 }

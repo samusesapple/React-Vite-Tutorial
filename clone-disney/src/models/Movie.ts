@@ -4,4 +4,5 @@ export interface Movie {
     title: string; // 영화 제목
     release_date: string; // 영화 개봉일
     backdrop_path: string; // 영화 배경 이미지 경로
+    poster_path: string; // 영화 포스터 이미지 경로
 }
