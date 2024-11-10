@@ -2,8 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import MovieAPI from "../services/MovieAPI";
 import { Movie } from "../models/Movie";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
-
-const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original";
+import { IMAGE_BASE_URL } from "../constants/Image";
 
 const Slider = () => {
     const [movieList, setMovieList] = useState<Movie[]>([]);
