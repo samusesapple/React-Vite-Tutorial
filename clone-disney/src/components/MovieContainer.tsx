@@ -1,12 +1,81 @@
 import { IoChevronBackOutline, IoChevronForwardOutline } from "react-icons/io5";
 import { useRef } from "react";
+import styled from "styled-components";
+
 interface MovieContainerProps {
     title?: string;
+    index: number;
     children: React.ReactNode;
 }
-    
-export default function MovieContainer({ title, children }: MovieContainerProps) {
 
+const StyledMovieContainer = styled.div`
+    .title {
+        color: white;
+        font-size: 20px;
+        padding-top: 1.5rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        font-weight: bold;
+        text-align: left;
+
+        @media (min-width: 768px) {
+            font-size: 28px;
+            padding-left: 4rem;
+            padding-right: 4rem;
+        }
+    }
+
+    .slider-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .slider-button {
+        display: none;
+        color: white;
+        font-size: 50px;
+        z-index: 10;
+        position: absolute;
+        margin-left: 0.5rem;
+        cursor: pointer;
+
+        &.right {
+            right: 0;
+            margin-right: 0.5rem;
+        }
+
+        &.margin-bottom {
+            margin-bottom: 4rem;
+        }
+
+        @media (min-width: 768px) {
+            display: block;
+        }
+    }
+
+    .content-wrapper {
+        display: flex;
+        overflow-x: auto;
+        scrollbar-width: none;
+        scroll-behavior: smooth;
+        padding: 1.25rem 2rem;
+        gap: 1.25rem;
+        justify-content: flex-start;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            padding: 1.25rem 4rem;
+            padding-bottom: 1.25rem;
+            gap: 2rem;
+        }
+    }
+`
+
+export default function MovieContainer({ title, index, children }: MovieContainerProps) {
     const elementRef = useRef<HTMLDivElement>(null);
 
     const sliderRight = (element: HTMLDivElement) => {
@@ -17,35 +86,26 @@ export default function MovieContainer({ title, children }: MovieContainerProps)
         element.scrollLeft -= 500;
     }
 
+    const shouldAddMargin = index > 0 && index % 3 === 0;
+
     return (
-        <>
-            <div className={`flex flex-col relative`}>
-            {title && (
-                <h2 className="text-white md:text-[28px] text-[20px] pt-6 px-8 md:px-16 font-bold text-left">
-                        {title}
-                    </h2>
-                )}
-                <div className="flex items-center relative mb-6">
+        <StyledMovieContainer>
+            <div className="flex flex-col relative">
+                {title && <h2 className="title">{title}</h2>}
+                <div className="slider-container">
                     <IoChevronBackOutline 
-                        className={`hidden md:block text-white text-[50px] z-10 absolute ml-2 cursor-pointer`}
+                        className={`slider-button ${shouldAddMargin ? 'margin-bottom' : ''}`}
                         onClick={() => elementRef.current && sliderLeft(elementRef.current)}
                     />   
-                    <div
-                        ref={elementRef}
-                        className={`
-                            flex overflow-x-auto scrollbar-none scroll-smooth
-                            px-8 md:px-16 pt-5 md:pb-5 md:gap-8
-                            gap-5 justify-start
-                        `}
-                    >
+                    <div ref={elementRef} className="content-wrapper">
                         {children}
                     </div>
                     <IoChevronForwardOutline 
-                        className={`hidden md:block text-white text-[50px] z-10 absolute right-0 mr-2 cursor-pointer`}
+                        className={`slider-button right ${shouldAddMargin ? 'margin-bottom' : ''}`}
                         onClick={() => elementRef.current && sliderRight(elementRef.current)}
                     />   
                 </div>   
             </div>
-        </>
+        </StyledMovieContainer>
     )
 }

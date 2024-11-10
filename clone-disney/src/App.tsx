@@ -11,8 +11,8 @@ function App() {
       <Slider />
       <ProductionHouse />
       <div>
-        {GENRE_LIST.map((genre) => (
-          <GenreMovieList key={genre.id} genreId={genre.id} />
+        {GENRE_LIST.map((genre, index) => (
+          <GenreMovieList key={genre.id} genreId={genre.id} index={index} />
         ))}
       </div>
     </div>
