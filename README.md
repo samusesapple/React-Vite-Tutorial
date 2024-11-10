@@ -105,6 +105,7 @@ yarn tailwindcss init -p
     > axios 활용한 네트워킹
     > 데이터 파싱
     > tailwind CSS snap 유틸리티 이해하기 (사용자가 스크롤할 때 특정 위치에서 자동으로 멈추도록 도와주는 기능)
+    > styled-component 방식의 레이아웃 학습
 
 ### 🔍 Tailwind CSS Snap 유틸리티
   1. 스냅 컨테이너 설정
@@ -139,3 +140,56 @@ yarn tailwindcss init -p
   </div>
   ```
 <br>
+
+### 🔍 Styled-Component
+> `styled-components`는 **CSS-in-JS 라이브러리**로, JavaScript 파일 내에서 CSS 스타일을 작성하고 이를 컴포넌트와 결합하여 사용할 수 있도록 도와주는 도구<br>
+  컴포넌트 기반 스타일링을 지원하여 코드의 모듈화와 재사용성을 높여준다.
+
+#### 주요 특징
+
+1. **CSS-in-JS**: 스타일을 JavaScript 파일 내에 작성할 수 있습니다. 따라서 CSS와 JavaScript 코드가 한 곳에 결합되어, 컴포넌트의 스타일과 로직이 독립적으로 유지됨.
+   
+2. **Scoped Styling (범위 지정 스타일링)**: `styled-components`로 작성한 스타일은 **컴포넌트의 고유 클래스명**으로 자동으로 스코프가 지정되어, 다른 컴포넌트와의 스타일 충돌을 방지 가능.
+
+3. **동적 스타일링 지원**: `props`를 사용하여 조건부 스타일링이 가능합니다. `props`를 통해 스타일을 동적으로 변경할 수 있어, 예를 들어 버튼 색상이나 크기를 사용자 입력에 따라 바꾸고 싶을 때 유용.
+
+4. **반응형 디자인 지원**: `@media` 쿼리나 테마 기능을 사용하여 쉽게 반응형 디자인을 적용할 수 있음.
+
+5. **테마 지원**: `ThemeProvider`를 통해 전역 테마를 정의하고 사용할 수 있어서, 프로젝트 전반에 걸쳐 일관된 스타일 유지에 용이.
+
+#### 사용 예시
+
+```typescript
+import styled from 'styled-components';
+
+interface ButtonProps {
+  primary?: boolean;
+}
+
+// 기본 스타일과 조건부 스타일 설정
+const StyledButton = styled.button<ButtonProps>`
+  background: ${(props) => (props.primary ? 'blue' : 'gray')};
+  color: white;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background: ${(props) => (props.primary ? 'darkblue' : 'darkgray')};
+  }
+`;
+
+export default function App() {
+  return (
+    <div>
+      <StyledButton primary>Primary Button</StyledButton>
+      <StyledButton>Default Button</StyledButton>
+    </div>
+  );
+}
+```
+<br>
+
+### 구현 화면
