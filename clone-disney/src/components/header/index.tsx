@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, 
+{ useState } from "react";
 import logo from "../../assets/images/logo.png";
 import user from "../../assets/images/user.png";
 // types
@@ -50,6 +51,7 @@ export default function Header() {
                 />
               )
           )}
+          {/* 더보기 버튼 */}
           <div className="md:hidden">
           <HeaderItem
             title={''}
