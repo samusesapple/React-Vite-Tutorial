@@ -52,13 +52,13 @@ export default function Header() {
               )
           )}
           {/* 더보기 버튼 */}
-          <div className="md:hidden">
+          <div className="md:hidden z-[2]">
           <HeaderItem
             title={''}
             icon={ShowMoreButton.icon}
             onClick={() => setIsOpen(!isOpen)}
           />
-            <div className={`absolute mt-3 border-[1px] p-3 px-5 py-3bg-[#121212] border-gray-700 ${isOpen ? 'block' : 'hidden'}`}>
+            <div className={`absolute mt-3 border-[1px] p-3 px-5 py-3 bg-[#15151e] border-gray-700 ${isOpen ? 'block' : 'hidden'}`}>
             {menus.map(
               (item, index) =>
                 index > 2 && ( // 3개만 보여주기
