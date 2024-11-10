@@ -99,4 +99,8 @@ yarn tailwindcss init -p
 <br>
 <br>
 
-### 2. 
+  ## 2. 디즈니 플러스 클론
+  ### 목적
+    > 반응형 웹사이트 UI 학습 (tailwind css 활용)
+    > axios 활용한 네트워킹
+    > 데이터 파싱
