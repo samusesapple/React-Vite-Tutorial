@@ -23,6 +23,7 @@ const Slider = () => {
     const sliderRight = (element: HTMLDivElement) => {
         const itemWidth = element.getBoundingClientRect().width;
         element.scrollLeft += itemWidth;
+        console.log('sliderRight', element);
         setIsButtonDisabled(true);
         setTimeout(() => {
             setIsButtonDisabled(false);
@@ -32,6 +33,7 @@ const Slider = () => {
     const sliderLeft = (element: HTMLDivElement) => {
         const itemWidth = element.getBoundingClientRect().width;
         element.scrollLeft -= itemWidth;
+        console.log('sliderLeft', element);
         setIsButtonDisabled(true);
         setTimeout(() => {
             setIsButtonDisabled(false);

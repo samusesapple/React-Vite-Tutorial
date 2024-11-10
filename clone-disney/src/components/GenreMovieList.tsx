@@ -23,7 +23,7 @@ export default function GenreMovieList({ genreId}: GenreMovieListProps) {
             title={GENRE_LIST.find((genre) => genre.id === genreId)?.title}
         >
             {movieList.map((item, index) => (
-                <MovieCard  
+                <MovieCard 
                     movie={item}
                     index={index}
                 />
