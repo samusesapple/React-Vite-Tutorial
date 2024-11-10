@@ -104,3 +104,38 @@ yarn tailwindcss init -p
     > 반응형 웹사이트 UI 학습 (tailwind css 활용)
     > axios 활용한 네트워킹
     > 데이터 파싱
+    > tailwind CSS snap 유틸리티 이해하기 (사용자가 스크롤할 때 특정 위치에서 자동으로 멈추도록 도와주는 기능)
+
+### 🔍 Tailwind CSS Snap 유틸리티
+  1. 스냅 컨테이너 설정
+    스크롤 스냅을 적용하기 위해 부모 컨테이너에 snap 클래스를 추가하기. <br>
+  ```bash
+  •snap-none: 스냅 기능을 비활성화
+  •snap-x: 가로 방향으로 스냅 활성화
+  •snap-y: 세로 방향으로 스냅 활성화
+  •snap-both: 가로와 세로 방향으로 스냅 활성화
+  ```
+  2. 스냅 위치 설정
+     자식 요소에 snap-* 클래스를 추가하여 스크롤 스냅 위치를 지정하기. <br>
+  ```bash
+  •snap-start: 자식 요소의 시작 지점에서 스냅
+  •snap-center: 자식 요소의 중앙에서 스냅
+  •snap-end: 자식 요소의 끝 지점에서 스냅
+  •snap-always: 스냅이 강제 적용되도록 설정
+  ```
+  3. 스냅 강도 설정
+     스크롤 스냅의 강도를 설정하여 스냅 위치에 도달할 때 스크롤이 멈추는 방식을 변경 가능. <br>
+  ```bash
+	•snap-mandatory: 스냅 위치에 도달할 때만 스크롤이 멈추도록 강제
+	•snap-proximity: 사용자가 가까운 위치로 스크롤할 때만 스냅을 적용
+  ```
+  4. 예시
+     가로 스크롤 스냅
+  ```bash
+  <div class="snap-x snap-mandatory overflow-x-auto flex"> // snap-x : 가로 방향으로 스냅 활성화, snap-mandatory: 스냅 위치에 도달할 때만 스크롤 멈추도록 강제
+      <div class="snap-center w-64 h-64 bg-blue-500 flex-shrink-0">Item 1</div> // snap-center: 스크롤 아이템 중앙 지점에서 멈추도록 설정
+      <div class="snap-center w-64 h-64 bg-red-500 flex-shrink-0">Item 2</div>
+      <div class="snap-center w-64 h-64 bg-green-500 flex-shrink-0">Item 3</div>
+  </div>
+  ```
+<br>
